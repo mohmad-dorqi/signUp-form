@@ -1,0 +1,12 @@
+.containerForm{
+  padding: 20px;
+      margin-top: 80px;
+    background-color: antiquewhite;
+    width: 380px;
+    height: 360px;
+}
+.container{
+  display: flex;
+  justify-content: center; 
+  
+}
