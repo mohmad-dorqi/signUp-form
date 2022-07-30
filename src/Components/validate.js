@@ -1,4 +1,4 @@
-const validate =(data)=>{
+export const validate =data=>{
     const errors={}
     const regexEmail=/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
     const regexPassword=/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
@@ -24,5 +24,18 @@ const validate =(data)=>{
     }else{
       delete  errors.password
     }
-    
+    if(!data.confirmPassword){
+        errors.confirmPassword="ConfirmPassword required"
+    }else if (data.confirmPassword !== password){
+        errors.confirmPassword = 'password not same'
+    }else{
+        delete errors.confirmPassword
+    }
+    if(data.isAccepted){
+        delete errors.isAccepted
+    }else{
+        errors.isAccepted= 'Accepted the rule'
+    }
+
+    return errors;
 }
