@@ -10,7 +10,7 @@ export const validate =data=>{
 
     if(!data.email){
         errors.email="Email required"
-    }else if(!data.email.test(regexEmail)){
+    }else if(!regexEmail.test(data.email)){
 
         errors.email="Invalid Email"
         
@@ -19,14 +19,14 @@ export const validate =data=>{
     }
     if(!data.password){
        errors.password="Password required"
-    }else if(!data.password.test(regexPassword)){
+    }else if(!regexPassword.test(data.password)){
         errors.password="Password Should at last 8 charecter "
     }else{
       delete  errors.password
     }
     if(!data.confirmPassword){
         errors.confirmPassword="ConfirmPassword required"
-    }else if (data.confirmPassword !== password){
+    }else if (data.confirmPassword !== data.password){
         errors.confirmPassword = 'password not same'
     }else{
         delete errors.confirmPassword

@@ -14,7 +14,7 @@ const SignUp = () => {
     const [errors,setErrors]=useState({})
     useEffect(()=>{
       setErrors(validate(data))
-      console.log(errors);
+     
 
     },[data])
 
@@ -26,7 +26,14 @@ const SignUp = () => {
     }else{
         setData({...data,[event.target.name]: event.target.value})
     }
-        console.log(data);
+        
+   }
+   const [touch,setTouch]= useState({})
+   const tochHandeler=(event)=>{
+
+    setTouch({...touch,[event.target.name]:true})
+
+
    }
     return (
         <div className={styles.container}>
@@ -34,24 +41,29 @@ const SignUp = () => {
             <div className={styles.containerForm}>
                 <div>
                     <label>Name</label>
-                    <input type='text' name='name' value={data.name} onChange={changeHandler} />
+                    <input type='text' name='name' value={data.name} onChange={changeHandler} onFocus={tochHandeler}  />
+                    {errors.name && touch.name && <span>{errors.name}</span>}
                 </div>
                 <div>
                     <label>Email</label>
-                    <input type='text' name='email' value={data.email} onChange={changeHandler} />
+                    <input type='text' name='email' value={data.email} onChange={changeHandler} onFocus={tochHandeler} />
+                    {errors.email && touch.email &&  <span>{errors.email}</span>}
                 </div>
                 <div>
                     <label>Password</label>
-                    <input type='password' name='password' value={data.password} onChange={changeHandler} />
+                    <input type='password' name='password' value={data.password} onChange={changeHandler} onFocus={tochHandeler}  />
+                    {errors.password && touch.password &&  <span>{errors.password}</span>}
                 </div>
                 <div>
                     <label>ConfirmPassword</label>
-                    <input type='password' name='confirmPassword' value={data.confirmPassword} onChange={changeHandler} />
+                    <input type='password' name='confirmPassword' value={data.confirmPassword} onChange={changeHandler} onFocus={tochHandeler}  />
+                    {errors.confirmPassword && touch.confirmPassword &&  <span>{errors.confirmPassword}</span>}
                 </div>
                
                 <div>
                     <label>Accepted rule</label>
-                    <input type='checkbox' name='isAccepted' value={data.isAccepted} onChange={changeHandler} />
+                    <input type='checkbox' name='isAccepted' value={data.isAccepted} onChange={changeHandler} onFocus={tochHandeler} />
+                    {errors.isAccepted && touch.isAccepted &&  <span>{errors.isAccepted }</span>}
                 </div>
              
                 
