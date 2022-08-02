@@ -6,31 +6,25 @@ import 'react-toastify/dist/ReactToastify.css';
 import {notify} from './toast'
 import { Link } from 'react-router-dom';
 
-const SignUp = () => {
+const Login = () => {
     const [touch,setTouch]= useState({})
     const [data, setData] = useState({
-        name:'',
+      
         email:'',
         password:'',
-        confirmPassword:'',
-        isAccepted:false
+       
 
     });
     const [errors,setErrors]=useState({})
     useEffect(()=>{
-      setErrors(validate(data,'SignUp'))
+      setErrors(validate(data,'Login'))
      
 
-    },[data ,touch])
+    },[data ,touch  ])
 
    const changeHandler = event => {
     
-    if(event.target.name ==="isAccepted"){
-      
-        setData({...data,[event.target.name]: event.target.checked})
-    }else{
-        setData({...data,[event.target.name]: event.target.value})
-    }
+    setData({...data,[event.target.name]: event.target.value})
         
    }
    const tochHandeler=(event)=>{
@@ -52,12 +46,8 @@ const SignUp = () => {
         <div className={styles.container}>
 
             <form onSubmit={submitHandler} className={styles.containerForm}>
-                <h1>SignUP</h1>
-                <div className={styles.feldStyle}>
-                    <label>Name</label>
-                    <input type='text' name='name' value={data.name} onChange={changeHandler} onFocus={tochHandeler}  />
-                    {errors.name && touch.name && <span>{errors.name}</span>}
-                </div>
+                <h1>Login</h1>
+               
                 <div className={styles.feldStyle}>
                     <label>Email</label>
                     <input type='text' name='email' value={data.email} onChange={changeHandler} onFocus={tochHandeler} />
@@ -68,23 +58,10 @@ const SignUp = () => {
                     <input type='password' name='password' value={data.password} onChange={changeHandler} onFocus={tochHandeler}  />
                     {errors.password && touch.password &&  <span>{errors.password}</span>}
                 </div>
-                <div className={styles.feldStyle}>
-                    <label>ConfirmPassword</label>
-                    <input type='password' name='confirmPassword' value={data.confirmPassword} onChange={changeHandler} onFocus={tochHandeler}  />
-                    {errors.confirmPassword && touch.confirmPassword &&  <span>{errors.confirmPassword}</span>}
-                </div>
-               
-                     <div className={styles.rulesStyle}>
-                          <label>Accepted rule</label>
-                         <input type='checkbox' name='isAccepted' value={data.isAccepted} onChange={changeHandler} onFocus={tochHandeler} />
-                  
-                      </div>
-               <div className={styles.feldStyle} >
-                     {errors.isAccepted && touch.isAccepted &&  <span>{errors.isAccepted }</span>}
-               </div>
+            
                <div  className={styles.rulesStyle}>
-                    <Link to='/src/Components/SignUp.js'>Login </Link>
-                    <button type='submit'>SignUp</button>
+                    <Link to='/src/Components/SignUp.js'>SignUP </Link>
+                    <button type='submit'>Login</button>
                </div>
              
                 
@@ -100,4 +77,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default Login;
