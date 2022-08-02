@@ -83,7 +83,7 @@ const SignUp = () => {
                      {errors.isAccepted && touch.isAccepted &&  <span>{errors.isAccepted }</span>}
                </div>
                <div  className={styles.rulesStyle}>
-                    <Link to='/src/Components/SignUp.js'>Login </Link>
+                    <Link to='/login'>Login </Link>
                     <button type='submit'>SignUp</button>
                </div>
              

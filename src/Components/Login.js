@@ -60,7 +60,7 @@ const Login = () => {
                 </div>
             
                <div  className={styles.rulesStyle}>
-                    <Link to='/src/Components/SignUp.js'>SignUP </Link>
+                    <Link to='/signup'>SignUP </Link>
                     <button type='submit'>Login</button>
                </div>
              
